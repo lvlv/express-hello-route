@@ -5,6 +5,5 @@
   "dependencies": {
     "express": "3.3.5"
   },
-  "author": "yury",
-  "license": «MIT»
+  "author": "yury"
 }
