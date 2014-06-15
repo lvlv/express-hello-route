@@ -12,6 +12,7 @@ names.forEach(function(name) {
     page.open('http://localhost:3131/hello/' + name, function() {
         //don't work..
         page.render(name + '.png', {format: 'png', quality: '100'});
+
         phantom.exit();
     });
 });
