@@ -15,14 +15,15 @@ app.get('/hello/:login', function(req,res) {
 
 app.param('login', function (req, res, next, name) {
 
-    users.push(toUpperCaseFirstLetter(name));
+    var  upName = toUpperCaseFirstLetter(name);
+    users.push(upName);
 
     res.status(200);
     res.set('Content-type', 'text/html');
     res.send(
-            '<title>Hi ' + toUpperCaseFirstLetter(name) + '</title>' +
+            '<title>Hi ' + upName + '</title>' +
             '<html><body>' +
-            '<h1>Hello ' + toUpperCaseFirstLetter(name) + '</h1>' +
+            '<h1>Hello ' + upName + '</h1>' +
             '</body></html>'
     );
 
@@ -40,7 +41,5 @@ app.get('*', function(req, res){
 });
 
 app.listen(app.get('port'), 'localhost', function(){
-  console.log('The server is running, ' +
-    ' please open your browser at http://localhost:' +
-     app.get('port'));
+  console.log('The server is running, please open your browser at http://localhost:' + app.get('port'));
 });
