@@ -11,25 +11,27 @@ var users = [];
 
 app.get('/hello/:login', function(req,res) {
 
-  var name = req.params.login;
+});
 
-  users.push(toUpperCaseFirstLetter(name));
+app.param('login', function (req, res, next, name) {
 
-  res.status(200);
-  res.set('Content-type', 'text/html');
-  res.send(
-    '<title>Hi ' + toUpperCaseFirstLetter(name) + '</title>' +
-    '<html><body>' +
-        '<h1>Hello ' + toUpperCaseFirstLetter(name) + '</h1>' +
-    '</body></html>'
-  );
+    users.push(toUpperCaseFirstLetter(name));
 
-  // uniq names
-  users = users.filter(function(elem, pos, self) {
-      return self.indexOf(elem) == pos;
-  });
+    res.status(200);
+    res.set('Content-type', 'text/html');
+    res.send(
+            '<title>Hi ' + toUpperCaseFirstLetter(name) + '</title>' +
+            '<html><body>' +
+            '<h1>Hello ' + toUpperCaseFirstLetter(name) + '</h1>' +
+            '</body></html>'
+    );
 
-  console.log('login: ' + '"' + name + '"' + '\n' + 'users: ' + users + '\n');
+    // uniq names
+    users = users.filter(function(elem, pos, self) {
+        return self.indexOf(elem) == pos;
+    });
+
+    console.log('login: ' + '"' + name + '"' + '\n' + 'users: ' + users + '\n');
 
 });
 
