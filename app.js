@@ -13,17 +13,17 @@ app.get('/hello/:login', function(req,res) {
 
 });
 
-app.param('login', function (req, res, next, name) {
+app.param('login', function (req, res, next, login) {
 
-    var  upName = toUpperCaseFirstLetter(name);
-    users.push(upName);
+    var name = toUpperCaseFirstLetter(login);
+    users.push(name);
 
     res.status(200);
     res.set('Content-type', 'text/html');
     res.send(
-            '<title>Hi ' + upName + '</title>' +
+            '<title>Hi ' + name + '</title>' +
             '<html><body>' +
-            '<h1>Hello ' + upName + '</h1>' +
+            '<h1>Hello ' + name + '</h1>' +
             '</body></html>'
     );
 
@@ -32,7 +32,7 @@ app.param('login', function (req, res, next, name) {
         return self.indexOf(elem) == pos;
     });
 
-    console.log('login: ' + '"' + name + '"' + '\n' + 'users: ' + users + '\n');
+    console.log('login: ' + '"' + login + '"' + '\n' + 'users: ' + users + '\n');
 
 });
 
