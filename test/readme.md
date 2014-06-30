@@ -1,0 +1,6 @@
+some kind of testing...
+
+seed.js - generate random names
+curl.sh - curl with each name
+
+phantom.js - phantom screenshots...
