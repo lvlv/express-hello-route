@@ -3,11 +3,11 @@ var app = express();
 
 app.set('port', 3131);
 
+var users = [];
+
 function toUpperCaseFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
-
-var users = [];
 
 app.get('/hello/:login', function(req,res) {
 
@@ -32,8 +32,7 @@ app.param('login', function (req, res, next, login) {
         return self.indexOf(elem) == pos;
     });
 
-    console.log('login: ' + '"' + login + '"' + '\n' + 'users: ' + users + '\n');
-
+    console.log('login: ' + '"' + login + '"' + ' ip: '+ req.ip + '\n' + 'users: ' + users + '\n');
 });
 
 app.get('*', function(req, res){
